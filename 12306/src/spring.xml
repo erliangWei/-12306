@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context-2.5.xsd
+           http://www.springframework.org/schema/aop 
+           http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+           http://www.springframework.org/schema/tx 
+           http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+        <bean id="dataSourceOracle" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+		    <property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
+		    <property name="url" value="jdbc:oracle:thin:@172.21.95.66:1521:orcl"/>
+		    <property name="username" value="scott"/>
+		    <property name="password" value="tiger"/>
+		    <!-- 连接池启动时的初始值 -->
+			<property name="initialSize" value="1"/>
+			<!-- 连接池的最大值 -->
+			<property name="maxActive" value="20"/>
+			<!-- 最大空闲值.当经过一个高峰时间后，连接池可以慢慢将已经用不到的连接慢慢释放一部分，一直减少到maxIdle为止 -->
+			<property name="maxIdle" value="2"/>
+			<!--  最小空闲值.当空闲的连接数少于阀值时，连接池就会预申请去一些连接，以免洪峰来时来不及申请 -->
+			<property name="minIdle" value="1"/>
+  		</bean>
+        <bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		     <property name="dataSource" ref="dataSourceOracle"/>
+		     <property name="mappingResources">
+			    <list>
+			      <value>com/dhorse/control_behide/po/StationPO.hbm.xml</value>
+			      <value>com/dhorse/control_behide/po/StationDeptPO.hbm.xml</value>
+			      <value>com/dhorse/control_behide/po/ProCapitalPO.hbm.xml</value>			
+			      <value>com/dhorse/control_behide/po/RatePO.hbm.xml</value>      
+			      <value>com/dhorse/control_behide/po/CoachPO.hbm.xml</value>      
+			      <value>com/dhorse/control_behide/po/TrainPO.hbm.xml</value>      
+			      <value>com/dhorse/control_behide/po/RoutePO.hbm.xml</value>      
+			      <value>com/dhorse/control_behide/po/ZonePO.hbm.xml</value>      
+			      <value>com/dhorse/control_behide/po/PlanPO.hbm.xml</value>      
+			      <value>com/dhorse/control_behide/po/UserPO.hbm.xml</value>      
+			      <value>com/dhorse/control_behide/po/PassengerPO.hbm.xml</value>      
+			    </list>
+		     </property>
+		     <property name="hibernateProperties">
+			    <value>
+			        hibernate.dialect=org.hibernate.dialect.OracleDialect
+			        hibernate.hbm2ddl.auto=update
+	                hibernate.show_sql=true
+			    </value>
+		    </property>
+		</bean>
+		<!-- 关于事务的控制 -->
+		<bean id="txManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+  			<property name="sessionFactory" ref="sessionFactory"/>
+		</bean>
+		<!-- 打开了注解方式使用事务的处理 -->
+		<tx:annotation-driven transaction-manager="txManager"/>
+		
+		<!-- 注解的方式进行AOP的处理 -->
+		<aop:aspectj-autoproxy/>
+		<!-- 注解的方式使用依赖注入 -->
+		<context:annotation-config/>
+		<!-- 使用扫描的方式来管理BEAN -->
+	    <context:component-scan base-package="com.dhorse.*"/>
+	    
+		<bean name="stationManageVO" class="com.dhorse.control_behide.vo.StationManageVO"></bean>
+	    <bean name="addStationVO" class="com.dhorse.control_behide.vo.AddStationVO"></bean>
+	    <bean name="stationDeptPO" class="com.dhorse.control_behide.po.StationDeptPO"></bean>
+	    <bean name="stationDeptListVO" class="com.dhorse.control_behide.vo.StationDeptListVO"></bean>
+	    <bean name="proCapitalVO" class="com.dhorse.control_behide.vo.ProCapitalVO"></bean>
+	    <bean name="stationPO" class="com.dhorse.control_behide.po.StationPO"></bean>
+	    <bean name="updateStationVO" class="com.dhorse.control_behide.vo.UpdateStationVO"></bean>
+	    
+		<bean name="stationManagerAction" class="com.dhorse.control_behide.action.StationManagerAction">
+	    	<property name="smsi" ref="stationManagerServiceImpl"></property>
+	    	<property name="stationList" ref="stationManageVO"></property>
+	    </bean>
+	    <bean name="stationManagerDAOImpl" class="com.dhorse.control_behide.dao.StationManagerDAOImpl">
+	    	<property name="sf" ref="sessionFactory"></property>
+	    </bean> 
+	   	<bean name="stationManagerServiceImpl" class="com.dhorse.control_behide.service.StationManagerServiceImpl">
+	    	<property name="smDAOi" ref="stationManagerDAOImpl"></property>
+	    	<!-- <property name="sdPO" ref="stationDeptPO"></property>
+	    	<property name="sPO" ref="stationPO"></property> -->
+	    </bean> 
+	    <bean name="addStationAction" class="com.dhorse.control_behide.action.AddStationAction">
+	    	<property name="smsi" ref="stationManagerServiceImpl"></property>
+	    </bean> 
+	    <bean name="getStationDeptAction" class="com.dhorse.control_behide.action.GetStationDeptAction">
+	    	<property name="smsi" ref="stationManagerServiceImpl"></property>
+	    	<property name="deptList" ref="stationDeptListVO"></property>
+	    </bean>
+	    <bean name="getProCapitalAction" class="com.dhorse.control_behide.action.GetProCapitalAction">
+	     	<property name="smsi" ref="stationManagerServiceImpl"></property>
+	     	<property name="proCapicalList" ref="proCapitalVO"></property>
+	    </bean> 
+	    <bean name="deleteStationAction" class="com.dhorse.control_behide.action.DeleteStationAction">
+	     	<property name="smsi" ref="stationManagerServiceImpl"></property>
+	    </bean>
+	    <bean name="updateStationAction" class="com.dhorse.control_behide.action.UpdateStationAction">
+	     	<property name="smsi" ref="stationManagerServiceImpl"></property>
+	    </bean>
+	    
+	    
+<!-- Rate部分-->
+        <bean name="rateManageVO" class="com.dhorse.control_behide.vo.RateManageVO"></bean>
+	    <bean name="rateManageAction" class="com.dhorse.control_behide.action.RateManageAction">
+	     	<property name="rmsi" ref="rateManageServiceImpl"></property>
+	     	<property name="rateList" ref="rateManageVO"></property>
+	    </bean>
+	    <bean name="addRateAction" class="com.dhorse.control_behide.action.AddRateAction">
+	     	<property name="rmsi" ref="rateManageServiceImpl"></property>
+	     	<property name="rVO" ref="rateManageVO"></property>
+	    </bean>
+	    <bean name="updateRateAction" class="com.dhorse.control_behide.action.UpdateRateAction">
+	     	<property name="rmsi" ref="rateManageServiceImpl"></property>
+	     	<property name="rVO" ref="rateManageVO"></property>
+	    </bean>
+	    <bean name="deleteRateAction" class="com.dhorse.control_behide.action.DeleteRateAction">
+	     	<property name="rmsi" ref="rateManageServiceImpl"></property>
+	    </bean>
+	    <bean name="rateManageServiceImpl" class="com.dhorse.control_behide.service.RateManageServiceImpl">
+	     	<property name="rmDAOi" ref="rateManageDAOImpl"></property>
+	    </bean>
+	    <bean name="rateManageDAOImpl" class="com.dhorse.control_behide.dao.RateManageDAOImpl">
+	  		<property name="sf" ref="sessionFactory"></property>
+	    </bean>
+
+	    
+ <!-- Coach部分 -->
+        <bean name="coachManageVO" class="com.dhorse.control_behide.vo.CoachManageVO"></bean>
+        <bean name="coachPO" class="com.dhorse.control_behide.po.CoachPO"></bean>
+	    <bean name="coachManageAction" class="com.dhorse.control_behide.action.CoachManageAction">
+	     	<property name="cmsi" ref="coachManageServiceImpl"></property>
+	     	<property name="coachList" ref="coachManageVO"></property>
+	    </bean>
+	    <bean name="addCoachAction" class="com.dhorse.control_behide.action.AddCoachAction">
+	     	<property name="cmsi" ref="coachManageServiceImpl"></property>
+	     	<property name="cmVO" ref="coachManageVO"></property>
+	    </bean>
+	    <bean name="updateCoachAction" class="com.dhorse.control_behide.action.UpdateCoachAction">
+	     	<property name="cmsi" ref="coachManageServiceImpl"></property>
+	     	<property name="cmVO" ref="coachManageVO"></property>
+	    </bean>
+	    <bean name="deleteCoachAction" class="com.dhorse.control_behide.action.DeleteCoachAction">
+	     	<property name="cmsi" ref="coachManageServiceImpl"></property>
+	    </bean>
+        <bean name="coachManageServiceImpl" class="com.dhorse.control_behide.service.CoachManageServiceImpl">
+        	<property name="cmDAOi" ref="coachManageDAOImpl"></property>
+<!--        	<property name="cList" ref="coachPO"></property>-->
+        </bean>
+        <bean name="coachManageDAOImpl" class="com.dhorse.control_behide.dao.CoachManageDAOImpl">
+        	<property name="sf" ref="sessionFactory"></property>
+        </bean>
+        
+<!-- Zone部分 -->
+        <bean name="zoneManageVO" class="com.dhorse.control_behide.vo.ZoneManageVO"></bean>
+        <bean name="zoneManageAction" class="com.dhorse.control_behide.action.ZoneManageAction">
+	     	<property name="zmsi" ref="zoneManageServiceImpl"></property>
+	     	<property name="zoneList" ref="zoneManageVO"></property>
+	    </bean>
+        <bean name="addZoneAction" class="com.dhorse.control_behide.action.AddZoneAction">
+	     	<property name="zmsi" ref="zoneManageServiceImpl"></property>
+	     	<property name="zVO" ref="zoneManageVO"></property>
+	    </bean>
+        <bean name="updateZoneAction" class="com.dhorse.control_behide.action.UpdateZoneAction">
+	     	<property name="zmsi" ref="zoneManageServiceImpl"></property>
+	     	<property name="zVO" ref="zoneManageVO"></property>
+	    </bean>
+        <bean name="deleteZoneAction" class="com.dhorse.control_behide.action.DeleteZoneAction">
+	     	<property name="zmsi" ref="zoneManageServiceImpl"></property>
+	    </bean>
+        <bean name="zoneManageServiceImpl" class="com.dhorse.control_behide.service.ZoneManageServiceImpl">
+	     	<property name="zmDAOi" ref="zoneManageDAOImpl"></property>
+	    </bean>
+        <bean name="zoneManageDAOImpl" class="com.dhorse.control_behide.dao.ZoneManageDAOImpl">
+	     	<property name="sf" ref="sessionFactory"></property>
+	    </bean>
+       
+        
+ <!-- train -->
+        <bean name="trainVO" class="com.dhorse.control_behide.vo.TrainVO"></bean>
+        <bean name="trainPO" class="com.dhorse.control_behide.po.TrainPO"></bean>
+        <bean name="trainManageAction" class="com.dhorse.control_behide.action.TrainManageAction">
+	     	<property name="tmsi" ref="trainManageServiceImpl"></property>
+	     	<property name="trainList" ref="trainVO"></property>
+	    </bean>
+	    
+	    <bean name="updateTrainAction" class="com.dhorse.control_behide.action.UpdateTrainAction">
+	     	<property name="tmsi" ref="trainManageServiceImpl"></property>
+	     	<property name="tVO" ref="trainVO"></property>
+	    </bean>
+         <bean name="addTrainAction" class="com.dhorse.control_behide.action.AddTrainAction">
+	     	<property name="tmsi" ref="trainManageServiceImpl"></property>
+	     	<property name="stationList" ref="stationManageVO"></property>
+	     	<property name="tVO" ref="trainVO"></property>
+	    </bean>
+         <bean name="deleteTrainAction" class="com.dhorse.control_behide.action.DeleteTrainAction">
+	     	<property name="tmsi" ref="trainManageServiceImpl"></property>
+	    </bean>
+	    
+	     <bean name="trainManageServiceImpl" class="com.dhorse.control_behide.service.TrainManageServiceImpl">
+	     	<property name="tmdi" ref="trainManageDaoImpl"></property>
+	    </bean>
+	     <bean name="trainManageDaoImpl" class="com.dhorse.control_behide.dao.TrainManageDaoImpl">
+	     	<property name="sf" ref="sessionFactory"></property>
+	    </bean>
+        
+<!--   route-->
+    	<bean name="routeVO" class="com.dhorse.control_behide.vo.RouteVO"></bean>
+    	<bean name="routePO" class="com.dhorse.control_behide.po.RoutePO"></bean>
+    	<bean name="routeManageAction" class="com.dhorse.control_behide.action.RouteManageAction">
+	     	<property name="rmsi" ref="routeManageServiceImpl"></property>
+	     	<property name="routeList" ref="routeVO"></property>
+	    </bean>
+    	<bean name="addRouteAction" class="com.dhorse.control_behide.action.AddRouteAction">
+	     	<property name="rmsi" ref="routeManageServiceImpl"></property>
+	     	<property name="rVO" ref="routeVO"></property>
+	    </bean>
+    	<bean name="updateRouteAction" class="com.dhorse.control_behide.action.UpdateRouteAction">
+	     	<property name="rmsi" ref="routeManageServiceImpl"></property>
+	     	<property name="rVO" ref="routeVO"></property>
+	    </bean>
+    	<bean name="deleteRouteAction" class="com.dhorse.control_behide.action.DeleteRouteAction">
+	     	<property name="rmsi" ref="routeManageServiceImpl"></property>
+	    </bean>
+    	<bean name="routeManageServiceImpl" class="com.dhorse.control_behide.service.RouteManageServiceImpl">
+	     	<property name="rmDAO" ref="routeManageDAOImpl"></property>
+	    </bean>
+    	<bean name="routeManageDAOImpl" class="com.dhorse.control_behide.dao.RouteManageDAOImpl">
+	     	<property name="sf" ref="sessionFactory"></property>
+	    </bean>
+<!-- plan -->
+		<bean name="planVO" class="com.dhorse.control_behide.vo.PlanVO"></bean>
+		<bean name="planManageAction" class="com.dhorse.control_behide.action.PlanManageAction">
+	     	<property name="pmsi" ref="planManageServiceImpl"></property>
+	     	<property name="planList" ref="planVO"></property>
+	    </bean>
+		<bean name="addPlanAction" class="com.dhorse.control_behide.action.AddPlanAction">
+	     	<property name="pmsi" ref="planManageServiceImpl"></property>
+	     	<property name="pVO" ref="planVO"></property>
+	    </bean>
+		<bean name="updatePlanAction" class="com.dhorse.control_behide.action.UpdatePlanAction">
+	     	<property name="pmsi" ref="planManageServiceImpl"></property>
+	     	<property name="pVO" ref="planVO"></property>
+	    </bean>
+		<bean name="deletePlanAction" class="com.dhorse.control_behide.action.DeletePlanAction">
+	     	<property name="pmsi" ref="planManageServiceImpl"></property>
+	    </bean>
+	    <bean name="planManageServiceImpl" class="com.dhorse.control_behide.service.PlanManageServiceImpl">
+	     	<property name="pmDAOi" ref="planManageDAOImpl"></property>
+	    </bean>
+    	<bean name="planManageDAOImpl" class="com.dhorse.control_behide.dao.PlanManageDAOImpl">
+	     	<property name="sf" ref="sessionFactory"></property>
+	    </bean>
+<!--	 User   -->
+    	<bean name="UserVO" class="com.dhorse.control_behide.vo.UserVO"></bean>
+    	<bean name="userManageAction" class="com.dhorse.control_behide.action.UserManageAction">
+	     	<property name="umsi" ref="userManageServiceImpl"></property>
+	     	<property name="userList" ref="UserVO"></property>
+	    </bean>
+    	<bean name="deleteUserAction" class="com.dhorse.control_behide.action.DeleteUserAction">
+	     	<property name="umsi" ref="userManageServiceImpl"></property>
+	    </bean>
+    	<bean name="getUserInfoAction" class="com.dhorse.control_behide.action.GetUserInfoAction">
+	     	<property name="umsi" ref="userManageServiceImpl"></property>
+	     	<property name="userInfo" ref="UserVO"></property>
+	    </bean>
+    	<bean name="userManageServiceImpl" class="com.dhorse.control_behide.service.UserManageServiceImpl">
+	     	<property name="uDAOi" ref="userManageDAOImpl"></property>
+	    </bean>
+    	<bean name="userManageDAOImpl" class="com.dhorse.control_behide.dao.UserManageDAOImpl">
+	     	<property name="sf" ref="sessionFactory"></property>
+	    </bean>
+	    
+<!--	 Passenger   -->
+		<bean name="passengerVO" class="com.dhorse.control_behide.vo.PassengerVO"></bean>
+		<bean name="passengerManageAction" class="com.dhorse.control_behide.action.PassengerManageAction">
+	     	<property name="pmsi" ref="passengerManageServiceImpl"></property>
+	     	<property name="passengerList" ref="passengerVO"></property>
+	    </bean>
+		<bean name="passengerManageServiceImpl" class="com.dhorse.control_behide.service.PassengerManageServiceImpl">
+	     	<property name="pmDAOi" ref="passengeManageDAOImpl"></property>
+	    </bean>
+		<bean name="passengeManageDAOImpl" class="com.dhorse.control_behide.dao.PassengeManageDAOImpl">
+	     	<property name="sf" ref="sessionFactory"></property>
+	    </bean>
+	    
+	    
+		
+	  
+</beans>
+

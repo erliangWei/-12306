@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping 
+	package="com.dhorse.control_behide.po">
+	<!-- name表示类名  table表示表名-->
+	<class name="StationPO" table="STATION">
+		<!--车站代码		
+					主键 -->
+		<id name="stationId">
+			 <generator class="increment"/> 
+		</id>
+		<!-- 车站名 -->
+		<property name="stationName" column="STATIONNAME"/>
+		<!-- 拼音码 -->
+		<property name="pinYin" column="PINYIN"/>
+		<!--  所属铁路局-->
+		<property name="stationDept" column="STATIONDEPT"/>
+		<!--  车站等级-->
+		<property name="stationLev" column="STATIONLEV"/>
+		<!--  所属行政区域-->
+		<property name="policyDept" column="POLICYDEPT"/>
+		<property name="address" column="ADDRESS"/>
+		
+		
+		<!-- 配置集合来存储该一对多关系中 “多”的数据
+		<set name="users">
+			<key column="deptid"></key>
+			<one-to-many class="UserinfoPO"></one-to-many>
+		</set> -->
+	</class>
+		
+</hibernate-mapping>

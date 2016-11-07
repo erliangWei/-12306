@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping 
+	package="com.dhorse.control_behide.po">
+	<!-- name表示类名  table表示表名-->
+	<class name="RouteStationPO" table="RouteStation_TB">
+		<id name="ID" column="ID">
+			 <generator  class="increment"/> 
+		</id>
+		<property name="startTime" column="startTime"  />
+		<property name="endTime" column="endTime"  />
+		<property name="sequence" column="sequence"  />
+		<set name="stationID">
+			<key column="ID"></key>
+			<one-to-many class="StationPO"></one-to-many>
+		</set> 
+		<set name="routeID">
+			<key column="ROUTEID"></key>
+			<one-to-many class="RoutePO"></one-to-many>
+		</set> 
+	</class>
+</hibernate-mapping>

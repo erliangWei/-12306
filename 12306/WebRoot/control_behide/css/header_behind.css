@@ -1,0 +1,33 @@
+
+*{margin:0; padding:0;font-size:13px;}
+
+body{background:url(img/bg2.png);}
+a:link {
+	text-decoration: none;
+}
+a:visited {
+	text-decoration: none;
+}
+a:hover {
+	text-decoration: none;
+}
+a:active {
+	text-decoration: none;
+}
+
+#container{width:1440px;}
+#bh_header{height:70px; width:100%;}
+#bh_logo{float:left;width:547px; height:67px; padding-top:0px; padding-left:50px;}
+#manager_state{ margin-left:0px;text-align:center;  height:70px; float:right;}
+#manager_state ul{list-style-type:none; display:inline-block;}
+#manager_state ul li{ display:inline-table;width:55px; font-size:14px; padding:2px 10px 0 10px;}
+#navigation{ width:100%; background:url(../img/nav_bg03.gif); height:5px;  }
+
+#time_show{width:200px; height:33px;margin-left:600px;font-size:14px;}
+#message_show{ width:300px; height:33px;margin-left:100px;font-size:14px;}
+#info{ color:#FFF; font-weight:bolder; padding-top:8px; font-size:14px; }
+#manager_state ul li img:hover{opacity:0.8;
+filter:alpha(opacity=80);}
+img{opacity:1.0;filter:alpha(opacity=100);}
+#manager_state ul li img{height:50xp; width:50px;}
+

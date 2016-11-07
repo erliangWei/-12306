@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+   
+<struts>
+	<package name="route" namespace="/" extends="json-default">
+	
+	<!-- 使用spring的bean的name来指明class -->
+		<action name="routeList" class="routeManageAction" method="routeList">
+		 	<result type="json" name ="show">
+		 		<param name="root">routeList</param>
+		 	</result>
+		</action>
+		
+		<!--	station 分页	-->
+		<action name="getRoutePage" class="routeManageAction" method="getRoutePage">
+			<result type="json" name ="page">
+		 		<param name="root">pageList</param>
+		 	</result>
+		</action>
+
+		<action name="addRoute" class="addRouteAction" method="addRoute">
+		</action>
+		<action name="deleteRoute" class="deleteRouteAction" method="deleteRoute">
+		</action>
+		<action name="updateRoute" class="updateRouteAction" method="updateRoute">
+		</action>
+	</package>
+</struts>

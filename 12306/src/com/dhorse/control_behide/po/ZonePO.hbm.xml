@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping 
+	package="com.dhorse.control_behide.po">
+	<!-- name表示类名  table表示表名-->
+	<class name="ZonePO" table="ZONE">
+		<id name="zoneId" column="ZONEID">
+			 <generator  class="increment"/> 
+		</id>
+		<property name="zoneFrom" column="ZONEFROM"  />
+		<property name="zoneTo" column="ZONETO"  />
+		<property name="zoneDistance" column="ZONEDISTANCE"  />
+		<property name="zoneAmount" column="ZONEAMOUNT"  />
+		
+	</class>
+</hibernate-mapping>

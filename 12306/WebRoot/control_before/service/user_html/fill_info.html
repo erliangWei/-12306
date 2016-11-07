@@ -1,0 +1,148 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script type="text/javascript" src="../../js/jquery-1.11.1.min.js">
+</script>
+<style type="text/css">
+*{padding:0; margin:0; }
+#container{ width:1000px; padding:0 5px; font-size:13px; }
+.title{ background:url(title_bg.gif); height:30px; vertical-align:middle; color:#FFF;border-top-right-radius:5px; border-top-left-radius:5px; font-size:14px;}
+.title p { vertical-align:middle;font-size:15px;padding:6px 20px;}
+.info{padding:5px 10px 0 10px;;  border: 1px solid #09F; margin-bottom: 5px;}
+#ticket_info{height:20px; margin-bottom:5px; font-size:14px; font-weight:bold; border-bottom: 1px dotted #666666;}
+#sit_info{font-size:13px; height:20px; }
+#sit_info span{color:#F63;}
+#user_info table input{height:20px; border-radius:3px;}
+#user_info table select{height:25px;border-radius:3px;}
+#operator{text-align:center; height:30px; margin-bottom:5px;}
+#operator input{ background-color:#F63; width:80px; height:30px; color:#fff; border-radius:10px; -moz-border-radius:10px; margin-right:10px;}
+#prompt{ width:960px;  padding:10px 20px; margin-top:10px; background-color:#FFD; border:1px solid #FF0; border-radius:10px; -moz-border-radius:10px; font-size:13px; color:#333;}
+#choise_passenger{height:20px; border-bottom:2px dotted #666666; padding-top:5px; margin-bottom:5px;}
+#user_info table{margin-bottom:10px; border:1px solid #09F; width:100%; font-size:12px; }
+#user_info table tr{height:20px;}
+a{font-size:12px;}
+a:link {
+	text-decoration: none;
+}
+a:visited {
+	text-decoration: none;
+}
+a:hover {
+	text-decoration: none;
+}
+a:active {
+	text-decoration: none;
+}
+</style>
+<script type="text/javascript">
+$(document).ready(function(e) {
+    
+
+$("#certain").click(function(){
+	window.open("check_info.html","newwindow","height=240,width=545,top=0,left=0,toolbar=no,menubar=no,scrollbars=no, resizable=no,location=no, status=no,alwaysRaised=yes,titlebar=no,z-look=yes");	
+});
+});
+</script>
+
+
+
+</head>
+
+<body>
+<div id="container">
+
+    <div class="title"> <p>列车信息（以下余票信息仅供参考）</p>
+    </div>
+    <div class="info">
+    	<div id="ticket_info">
+            <span>2014-10-10（周五）&nbsp;&nbsp;<span>
+            <span> K813次&nbsp;&nbsp;<span>
+            <span> 广州站（05:08开)<span>
+            <span>-肇庆站（07:18到）<span> 
+        </div>
+        <div id="sit_info">
+        	软卧（<span>￥102.5</span>）无票&nbsp;&nbsp; 硬卧（<span>￥67.5</span>）有票&nbsp;&nbsp; 硬座（<span>￥16.5</span>）有票&nbsp;&nbsp; 无座（<span>￥16.5</span>）有票
+        </div>
+    </div>
+
+    <div class="title"> <p>乘客信息（填写说明）</p>
+    </div>
+    <div class="info">
+   		<div id="user_info" >
+      		<div id="choise_passenger">
+                <input type="checkbox" name="user"  />&nbsp; jiajia &nbsp;&nbsp;
+                <input type="checkbox" name="user"  />&nbsp; jiajia &nbsp;&nbsp;
+                <input type="checkbox" name="user"  />&nbsp; jiajia &nbsp;&nbsp;
+                <input type="checkbox" name="user"  />&nbsp; jiajia &nbsp;&nbsp;
+            </div>
+
+            <table cellspacing="3px">
+                <tr>
+                	<td>序号</td>
+                    <td>席别</td>
+                    <td>票种</td>
+                    <td>姓名</td>
+                    <td>证件类型</td>
+                    <td>证件号码</td>
+                    <td>手机号码</td>
+                </tr>
+                <tr>
+                	<td align="center"> 1</td>
+                    <td> 
+                    	<select name="sit">
+                        	<option value="1">软卧(￥16.5)</option>
+                        	<option value="2">硬座(￥16.5)</option>
+                            <option value="3">硬卧(￥16.5)</option>
+                            <option value="4">无座(￥16.5)</option>
+                        </select>
+                    </td>
+                    	
+                    <td>
+                    	<select name="ticket_type">
+                        	<option value="1">成人票</option>
+                        	<option value="2">学生票</option>
+                            <option value="3">儿童票</option>
+                            <option value="4">残军票</option>
+                        </select>
+                    </td>
+                    <td>
+                    	<input type="text" id="user" style="width:80px;"/>
+                    </td>
+                    <td>
+                   		<select name="ID_name">
+                        	<option value="1">身份证</option>
+                        	<option value="2">护照</option>
+                            <option value="3">港澳通行证</option>
+                        </select>
+                    </td>
+                    <td>
+                    	<input type="text" id="ID_num" style="width:135px;"/>
+                    </td>
+                    <td>
+                    	<input type="text" id="tel_num" style="width:100px;"/>&nbsp;&nbsp;
+                        <a href="#">添加儿童</a>
+                    </td>
+                </tr>
+            </table>
+            <div><a href="#" >新增用户</a> </div>
+            <div>请输入验证码：<input type="text" style="width:40px;margin-bottom:10px;"/></div>
+        </div>
+    </div>
+    	 <div id="operator">
+        	<input type="button" id="cancel" value="上一步" />
+            <input type="button" id="certain" value="提交订单" />
+        </div>
+    </div>
+    <div id="prompt">
+        	<p><b>温馨提示</b></p>
+            <P>1. 一张有效身份证件同一乘车日期同一车次只能购买一张车票。</P>
+            <P>2. 购票时可使用的有效身份证件包括：中华人民共和国居民身份证、港澳居民来往内地通行证、台湾居民来往大陆通行证和按规定可使用的有效护照。</P>
+            <P>3. 购买儿童票时，乘车儿童有有效身份证件的，请填写本人有效身份证件信息。乘车儿童没有有效身份证件的，应使用同行成年人的有效身份证件信息；购票时不受第一条限制，但购票后、开车前须办理换票手续方可进站乘车。</P> 
+            <p>4. 购买学生票时，须在我的常用联系人 中登记乘车人的学生详细信息。学生票乘车时间限为每年的暑假6月1日至9月30日、寒假12月1日至3月31日。购票后、开车前，须办理换票手续方可进站乘车。换票时，新生凭录取通知书，毕业生凭学校书面证明，其他凭学生优惠卡。</p>
+            <p>5. 购买残疾军人（伤残警察）优待票的，须在购票后、开车前办理换票手续方可进站乘车。换票时，不符合规定的减价优待条件，没有有效"中华人民共和国残疾军人证"或"中华人民共和国伤残人民警察证"的，不予换票，所购车票按规定办理退票手续。</p> 
+</div>
+ </div>  
+</body>
+</html>

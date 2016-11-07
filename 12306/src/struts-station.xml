@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+   
+<struts>
+	<package name="station" namespace="/" extends="json-default">
+	
+	<!-- 使用spring的bean的name来指明class -->
+		<action name="stationList" class="stationManagerAction" method="stationList">
+		 	<result type="json" name ="show">
+		 		<param name="root">stationList</param>
+		 	</result>
+		</action>
+		
+		<!--	station 分页	-->
+		<action name="getStationPage" class="stationManagerAction" method="getStationPage">
+			<result type="json" name ="page">
+		 		<param name="root">pageList</param>
+		 	</result>
+		</action>
+		
+		<action name="stationAddInfo" class="addStationAction" method="stationAddInfo">
+		</action>
+		
+		<action name="stationDeptList" class="getStationDeptAction" method="stationDeptList">
+			<result type="json" name ="dept">
+		 		<param name="root">deptList</param>
+		 	</result>
+		</action>
+		<action name="proCapitalList" class="getProCapitalAction" method="proCapitalList">
+			<result type="json" name ="province">
+		 		<param name="root">proCapicalList</param>
+		 	</result>
+		</action>
+		<action name="delectStation" class="deleteStationAction" method="delectStation">
+		</action>
+		<action name="updateStation" class="updateStationAction" method="updateStation">
+		</action>
+		<action name="listPage" class="stationManagerAction" method="listPage">
+<!--			<result name="page" type="chain">/12306/stationList.action</result>-->
+		</action>
+	</package>
+</struts>

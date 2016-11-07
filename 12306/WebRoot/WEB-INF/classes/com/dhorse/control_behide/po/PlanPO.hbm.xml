@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping 
+	package="com.dhorse.control_behide.po">
+	<!-- name表示类名  table表示表名-->
+	<class name="PlanPO" table="PLAN">
+		<id name="planId" column="PLANID">
+			 <generator  class="increment"/> 
+		</id>
+		<property name="trainId" column="TRAINID"  />
+		<property name="coachNO" column="COACHNO"  />
+		<property name="startStation" column="STARTSTATION"  />
+		<property name="endStation" column="ENDSTATION"  />
+		<property name="publishTime" column="PUBLISHTIME"  />
+		<property name="implementTime" column="IMPLEMENTTIME"  />
+		
+		</class>
+		</hibernate-mapping>

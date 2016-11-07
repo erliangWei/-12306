@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping 
+	package="com.dhorse.control_behide.po">
+	<!-- name表示类名  table表示表名-->
+	<class name="StationDeptPO" table="STATIONDEPT">
+		<!--铁路局id
+					主键 -->
+		<id name="deptID" column="DEPTID">
+			 <generator class="increment"/> 
+		</id>
+		<property name="deptName" column="DEPTNAME" />		
+		
+		
+		<!-- 配置集合来存储该一对多关系中 “多”的数据
+		<set name="users">
+			<key column="deptid"></key>
+			<one-to-many class="UserinfoPO"></one-to-many>
+		</set> -->
+	</class>
+		
+</hibernate-mapping>

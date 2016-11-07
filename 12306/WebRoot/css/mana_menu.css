@@ -1,0 +1,19 @@
+@charset "utf-8";
+/* CSS Document */
+*{padding:0; margin:0;}
+a:link {text-decoration: none;}
+a:visited {text-decoration: none;}
+a:hover {text-decoration: none; font-size:20px; font-weight:bolder;}
+a:active {text-decoration: none;}
+#menu_container{width:250px; padding:5px; border:1px solid #F00; margin-left:10px;;border-radius:7px;-moz-border-radius:7px; /* Old Firefox */ margin-top:3px;}
+#admin{  height:144px;folat:left;}
+#admin_pic{width:108px;height:144;float:left;}
+.info_title{ padding-left:120px; color:#333; padding-top:15px;}
+.info_show{ padding-left:140px; padding-top:5px; color:#F60;}
+.li_bg , #menu_list1 li , #menu_list5 li{height:24px;list-style-type:none;padding-left:50px;padding-top:8px; font-size:14px;}
+.li_bg{ background:url(../img/nav_bg03.gif);}
+#menu_list1 li , #menu_list5 li{ background:url(../img/nav_bg04.gif); color:#b20; padding-left:80px;}
+.menu ul a { color:#FFF;  }
+li:hover,li:visited{opacity:0.8;filter:alpha(opacity=80);}
+li{opacity:1.0;filter:alpha(opacity=100);}
+

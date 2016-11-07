@@ -1,0 +1,42 @@
+@charset "utf-8";
+/* CSS Document */
+a:link {
+	text-decoration: none;
+}
+a:visited {
+	text-decoration: none;
+}
+a:hover {
+	text-decoration: none;
+}
+a:active {
+	text-decoration: none;
+}
+*{padding:0;margin:0; font-size:13px;}
+#add_board,#container,#update_board{width:99%; border:1px solid #09F; border-top-right-radius:6px; border-top-left-radius:6px;}
+#container{ height:550px;}
+
+.title{ background:url(../img/title_bg.gif); height:25px; vertical-align:middle; color:#FFF; border-top-right-radius:5px; border-top-left-radius:5px; }
+.title p { vertical-align:middle;font-size:15px;padding:4px 30px;}
+#search{margin-top:5px;margin-bottom:5px;}
+.opera input,#search_but , #page input{ width:60px; height:23px; background-color:#F63; color:#FFF; border-radius:5px;
+-moz-border-radius:5px; }
+#page input{ width:50px; height:23px; background-color:#F63; color:#FFF; border-radius:5px;
+-moz-border-radius:5px;}
+.opera{width:70px;}
+table{ margin:0 auto; width:95%;}
+table tr th{padding:0 5px 0 5px; font-size:13px; height:25px;}
+table tr td{height:15px; font-size:13px;}
+#list tr td input{width:40px; height:20px; background-color:#F63; color:#FFF; border-radius:5px;
+-moz-border-radius:5px;}
+#list{height:430px; }
+#list table{border:1px solid #09F; border-top-right-radius:5px; border-top-left-radius:5px;}
+#page{ text-align:center; margin-top:10px;}
+#add_opera input{height:23px; background-color:#F63; color:#FFF; border-radius:5px; padding:0 3px;
+-moz-border-radius:5px;}
+#add_opera{margin:5px 10px;}
+hr{ border:2px solid #09F; }
+#add_board table,#update_board table{width:95%;}
+#add_board table tr td,#update_board table tr td{height:30px;}
+span{color:#F00;}
+#prompt{margin:5px 10px;}

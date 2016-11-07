@@ -1,0 +1,107 @@
+@charset "utf-8";
+/* CSS Document */
+* {
+	margin:0;
+	padding:0;
+}
+body {
+	font-family:Arial, Verdana, Helvetica, sans-serif;
+	font-size:1em;
+	font-size:17px;
+	color:#000;
+	text-align:left;
+}
+a {
+	color:#000;
+	text-decoration:none;
+}
+ul {
+	list-style:none;
+}
+
+#mobanwang_com {
+	height:37px;
+	font-size:1.3em;
+	text-align:center;
+}
+#mobanwang_com a {
+	font-size:0.65em;
+}
+#mobanwang_com li ul {
+	display:none;
+}
+#mobanwang_com li ul li {
+	float:none;
+}
+*html #mobanwang_com li ul li {
+	display:inline;
+}
+#mobanwang_com li ul a {
+	float:none;
+	height:32px;
+	line-height:32px;
+	padding:0 10px;
+	text-transform:capitalize;
+}
+#mobanwang_com .height-auto {
+	line-height:15px;
+	padding:5px 10px;
+}
+.second-menu{
+	position:absolute;
+}
+.first-menu li {
+	float:left;
+	position:relative;
+}
+.first-menu a {
+	float:left;
+	display:block;
+	padding:0 25px;
+	height:35px;
+	font-weight:bold;
+
+	line-height:35px;
+
+	border-top:1px solid #F2F2F2;
+	border-left:1px solid #F2F2F2;
+	border-bottom:1px solid #F2F2F2;
+	border-right:1px solid #F2F2F2;
+	font-size:.7em;
+}
+.first-menu a:hover {
+	background:#5BF1F8;
+	border-top:1px solid #5db1e0;
+	border-left:1px solid #5db1e0;
+	border-bottom:thin solid #00F;
+}
+.second-menu {
+	top:37px;
+	right:0;
+}
+.second-menu a {
+	background-color:#4698ff;
+	border-top:1px solid #F2F2F2;
+	border-left:1px solid #F2F2F2;
+	border-bottom:1px solid #F2F2F2;
+	border-right:1px solid #F2F2F2;
+	}
+*html .second-menu {
+	right:-1px;
+}
+.second-menu a {
+	font-size:11px;
+}
+
+#subMusic{
+	width:177px;
+}
+div{ margin:0 auto; width:1000px;}
+#header{height:67px;}
+#logo{height:67px;background:#00F;width:550px;float:left; background:url(../img/logo2.gif);}
+#state {height:30px;width:450px;float:right;}
+#state ul li a {display:inline;font-size:10px; margin-right:30px;float:right; margin-top:10px;}
+#state ul li{display:inline; }
+#navigation{width:450px;height:50px; float:right;}
+#mobanwang_com{float:right;}
+#localtion p {font-size:10px; margin:10px 10px;}

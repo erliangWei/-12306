@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="passenger" namespace="/" extends="json-default">
+	<!-- 使用spring的bean的name来指明class -->	
+		<action name="passengerList" class="passengerManageAction" method="passengerList">
+		 	<result type="json" name ="passenger">
+		 		<param name="root">passengerList</param>
+		 	</result>
+		</action>
+<!--		<action name="getUserPage" class="userManageAction" method="getUserPage">-->
+<!--			<result type="json" name ="page">-->
+<!--		 		<param name="root">pageList</param>-->
+<!--		 	</result>-->
+<!--		</action>-->
+<!--		<action name="getUserInfoById" class="getUserInfoAction" method="getUserInfoById">-->
+<!--			<result type="json" name ="user">-->
+<!--		 		<param name="root">userInfo</param>-->
+<!--		 	</result>-->
+<!--		</action>-->
+<!--		<action name="deleteUser" class="deleteUserAction" method="deleteUser">-->
+<!--		</action>-->
+	</package>
+	
+</struts>

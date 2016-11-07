@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="zonexml" namespace="/" extends="json-default">
+	<!-- 使用spring的bean的name来指明class -->	
+		<!-- RateAction部分 -->
+		<action name="zoneList" class="ZoneAction" method="zoneList">
+		<result type="json" name="showzone">
+		<param name="root">zoneList</param>
+</result>
+		</action>
+	</package>
+	
+</struts>

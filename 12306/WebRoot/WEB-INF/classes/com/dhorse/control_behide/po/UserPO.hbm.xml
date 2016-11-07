@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping 
+	package="com.dhorse.control_behide.po">
+	<!-- name表示类名  table表示表名-->
+	<class name="UserPO" table="USERINFO">
+		<id name="USERID" column="USERID">
+			 <generator  class="increment"/> 
+		</id>
+		<property name="EMAIL" column="EMAIL"/>
+		<property name="PASSWARD" column="PASSWARD"/>
+		<property name="NAME" column="NAME"/>
+		<property name="SEX" column="SEX"/>
+		<property name="IDCARD" column="IDCARD "/>
+		<property name="PHONE" column="PHONE"/>
+		<property name="RECENTLOGTIME" column="RECENTLOGTIME"/>
+		<property name="IDCARDTYPE" column="IDCARDTYPE"/>
+		<property name="BORNDAY" column="BORNDAY"/>
+		<property name="ADDRESS" column="ADDRESS"/>
+		<property name="PASSENGERTYPE" column="PASSENGERTYPE"/>
+		<property name="USERNAME" column="USERNAME"/>
+		<property name="POSTCODE" column="POSTCODE"/>
+		<property name="TELEPHONE" column="TELEPHONE"/>
+		
+		<set name="passengers">
+			<key column="USERID"></key>
+			<one-to-many class="PassengerPO"></one-to-many>
+		</set> 
+		</class>
+		</hibernate-mapping>

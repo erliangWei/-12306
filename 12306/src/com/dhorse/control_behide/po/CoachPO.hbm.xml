@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping 
+	package="com.dhorse.control_behide.po">
+	<!-- name表示类名  table表示表名-->
+	<class name="CoachPO" table="COACH">
+		<!--车站代码		
+					主键 -->
+		<id name="coachId" column="COACHID">
+			 <generator  class="increment"/> 
+		</id>
+		<!-- 车次代码 -->
+		<property name="coachTrainId" column="TRAINID"  />
+		<!-- 车厢号 -->
+		<property name="coachNo" column="COACHNO"  />
+		<!-- 车厢座席数量-->
+		<property name="seat" column="SEAT"  />
+		<!-- 车厢类型 -->
+		<property name="coachType" column="COACHTYPE"  />
+		<!-- 车厢座席类型 -->
+		<property name="seatType" column="SEATTYPE"  />
+		
+		</class>
+		</hibernate-mapping>

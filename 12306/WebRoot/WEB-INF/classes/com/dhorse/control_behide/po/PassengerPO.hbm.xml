@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping 
+	package="com.dhorse.control_behide.po">
+	<!-- name表示类名  table表示表名-->
+	<class name="PassengerPO" table="PASSENGER">
+		<!--铁路局id
+					主键 -->
+		<id name="ID" column="ID">
+			 <generator class="increment"/> 
+		</id>
+		<property name="POSTAL" column="POSTAL" />		
+		<property name="NAME" column="NAME" />		
+		<property name="SEX" column="SEX"/>		
+		<property name="ID_TYPE" column="ID_TYPE" />		
+		<property name="ID_CODE" column="ID_CODE" />		
+		<property name="PASSENGER_TYPE" column="PASSENGER_TYPE" />		
+		<property name="PHONE" column="PHONE" />		
+		<property name="TELL_PHONE" column="TELL_PHONE" />		
+		<property name="EMAIL" column="EMAIL" />		
+		<property name="ADDRESS" column="ADDRESS" />		
+	
+		
+		
+		<!-- 配置集合来存储该一对多关系中 “多”的数据-->
+		<many-to-one name="USER_PASS_ID" column="USER_PASS_ID" class="PassengerPO"></many-to-one>
+	</class>
+		
+</hibernate-mapping>

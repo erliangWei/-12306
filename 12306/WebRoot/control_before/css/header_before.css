@@ -1,0 +1,116 @@
+* {
+	margin:0;
+	padding:0;
+}
+body {
+	font-family:Arial, Verdana, Helvetica, sans-serif;
+	font-family:"ÑÅºÚËÎÌå", "Î¢ÈíÑÅºÚ", "ÐÂËÎÌå", "ËÎÌå";
+	font-size:1em;
+	font-size:17px;
+	color:#000;
+	text-align:left;
+}
+a {
+	color:#000;
+	text-decoration:none;
+}
+ul {
+	list-style:none;
+}
+
+#mobanwang_com {
+	height:37px;
+	font-size:1.3em;
+	text-align:center;
+}
+#mobanwang_com a {
+	font-size:14px;
+}
+#mobanwang_com li ul {
+	display:none;
+}
+#mobanwang_com li ul li {
+	float:none;
+}
+*html #mobanwang_com li ul li {
+	display:inline;
+}
+#mobanwang_com li ul a {
+	float:none;
+	height:32px;
+	line-height:32px;
+	padding:0 10px;
+	text-transform:capitalize;
+}
+#mobanwang_com .height-auto {
+	line-height:15px;
+	padding:5px 10px;
+}
+.second-menu{
+	position:absolute;
+}
+.first-menu li {
+	float:left;
+	position:relative;
+}
+.first-menu a {
+	float:left;
+	display:block;
+	padding:0 27px;
+	height:40px;
+	font-weight:3px;
+	color:#555;
+	line-height:35px;
+
+}
+.first-menu a:hover {
+	color:#09F;
+	border-bottom:1px solid #09F;
+}
+.second-menu {
+	top:40px;
+	right:0;
+}
+.second-menu a {
+	background-color:#FFF;
+	color:#333;
+}
+.second-menu a:hover {
+	color:#FFF;
+	background-color:#09f;
+}
+
+*html .second-menu {
+	right:-1px;
+}
+.second-menu a {
+	font-size:11px;
+}
+
+#subMusic{
+	width:150px;
+}
+div{ margin:0 auto; width:1000px;}
+#header{height:70px;}
+#logo{height:67px;background:#00F;width:550px;float:left; background:url(../img/logo2.gif);}
+#state {height:30px;width:450px;float:right; }
+
+#navigation{width:450px;height:50px; float:right;}
+#mobanwang_com{float:right;}
+#localtion p {
+	font-size:12px; margin:5px 10px;
+}
+
+
+#state_first , #state_second , #state_third{ float:left; font-size:13px;padding:5px 0;}
+#state_first , #state_second{width:40px; text-align:center; padding-bottom:5px}
+#state_first {margin-left:200px;}
+#state_third{ margin-left:50px;width:85px;}
+#state_third a{width:85px;}
+#state_third_list li{ heigth:30px;padding:5px;}
+#state_third ul{width:150px;}
+#state_third_list{ background-color:#FFF; margin-top:5px; padding-top:10px;}
+.list{border-top:outset #CCC 1px; margin:0 8px 0 8px;}
+#list_first{margin:0 8px 0 8px;}
+#state_third_list{position:relative; z-index:99999;}
+#state_third_list a:hover{ color:#999}

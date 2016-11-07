@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping 
+	package="com.dhorse.control_behide.po">
+	
+	<!-- name表示类名  table表示表名-->
+	<class name="RatePO" table="RATE">     
+		<id name="rateId" column="RATEID">
+			 <generator class="increment"/> 
+		</id>
+		<property name="ticketType" column="TICKETTYPE"></property>
+		<property name="ticketRate" column="TICKETRATE"></property>
+		<property name="ratIO" column="RATIO"></property>
+		
+		</class>
+		
+	
+	
+	
+	
+	</hibernate-mapping>

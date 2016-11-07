@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="user" namespace="/" extends="json-default">
+	<!-- 使用spring的bean的name来指明class -->	
+		<action name="userList" class="userManageAction" method="userList">
+		 	<result type="json" name ="show">
+		 		<param name="root">userList</param>
+		 	</result>
+		</action>
+		<action name="getUserPage" class="userManageAction" method="getUserPage">
+			<result type="json" name ="page">
+		 		<param name="root">pageList</param>
+		 	</result>
+		</action>
+		<action name="getUserInfoById" class="getUserInfoAction" method="getUserInfoById">
+			<result type="json" name ="user">
+		 		<param name="root">userInfo</param>
+		 	</result>
+		</action>
+		<action name="deleteUser" class="deleteUserAction" method="deleteUser">
+		</action>
+<!--		<action name="addZone" class="addZoneAction" method="addZone">-->
+<!--		</action>-->
+<!--		<action name="updateZone" class="updateZoneAction" method="updateZone">-->
+<!--		</action>-->
+	</package>
+	
+</struts>

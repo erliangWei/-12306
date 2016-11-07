@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>车票信息核对</title>
+
+<style type="text/css">
+*{padding:0; margin:0; font-size:12px;}
+
+#title{ height:15px; background:url(title_bg.gif); color:#FFF; padding:7px 10px;font-size:14px; margin-bottom:5px;}
+p{height:15px; margin:5px 0 ;}
+#div0{ padding:3px 10px 3px;}
+#info_train span{font-size:14px; font-weight:bold;}
+#info_train p{margin-bottom:5xp; }
+#div1{border-bottom:1px dashed #999; margin-bottom:10px;}
+table{width:100%; margin:5px 0;}
+table tr td{ text-align:center; border-bottom:1px solid #999; height:25px;}
+#top td{border-top:1px solid #999;}
+#operator{text-align:center; height:30px; margin-bottom:5px; margin-top:10px;}
+#operator input{ background-color:#F63; width:80px; height:30px; color:#fff; border-radius:10px; -moz-border-radius:10px; margin-right:10px;}
+</style>
+
+</head>
+
+<body>
+<div id="containner">
+
+	<div id="title">请核实一下信息</div>
+<div id="div0">
+    <div id="div1">
+    	<p>车次信息 </p>
+        <p id="info_train"><span>2014-10-10（周五）</span>&nbsp;<span>K813</span>次<span>&nbsp;广州</span>站<span>（05:08开）—肇庆</span>站<span>（07:18到）</span></p>
+    </div>
+    <p>乘车人信息</p>
+    <table cellspacing="0" >
+    	<tr id="top">
+        	<td>序号</td><td>席别</td><td>票种</td><td>证件类型</td><td>证件号码</td><td>手机号码</td>
+        </tr>
+        <tr>
+        	<td>1</td><td>硬卧</td><td>成人票</td><td>二代身份证</td><td>2011241341111114</td><td>15986934867</td>
+        </tr>
+    </table>
+    <p>系统将随机为您申请席位，暂不支持自选席位。</p>
+     <div id="operator">
+        <input type="button" id="cancel" value="返回修改" />
+        <input type="button" id="certain" value="确认" />
+     </div>
+    
+</div>
+</div>
+
+
+</body>
+</html>

@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping 
+	package="com.dhorse.control_behide.po">
+	<!-- name表示类名  table表示表名-->
+	<class name="RoutePO" table="ROUTE">
+		<id name="routeId" column="ROUTEID">
+			 <generator  class="increment"/> 
+		</id>
+		<property name="trainId" column="TRAINID"  />
+		<property name="stationAll" column="STATIONALL"  />
+		<property name="leaveTime" column="LEAVETIME"  />
+		<property name="arriveTime" column="ARRIVETIME"  />
+		<property name="totalDistance" column="TOTALDISTANCE"  />
+		<property name="totalTime" column="TOTALTIME"  />
+	</class>
+</hibernate-mapping>
